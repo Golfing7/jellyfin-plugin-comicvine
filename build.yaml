@@ -8,12 +8,9 @@ owner: "jellyfin"
 overview: "Manage your books"
 description: >
   Supports several different metadata providers and options for organizing your collection.
-
 category: "Books"
 artifacts:
   - "Jellyfin.Plugin.Bookshelf.dll"
-  - "SharpCompress.dll"
-  - "ZstdSharp.dll"
 changelog: |-
   - Fix nullability for 10.10 (#116) @crobibero
   - Update opf and add ISBN (#108) @AshleyDeo
