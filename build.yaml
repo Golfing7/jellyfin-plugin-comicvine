@@ -1,11 +1,11 @@
 ---
-name: "Bookshelf"
-guid: "9c4e63f1-031b-4f25-988b-4f7d78a8b53e"
-version: 12
+name: "Comic Vine"
+guid: "309ec7e5-4981-4e8c-992f-8e4dde9591e0"
+version: 1
 targetAbi: "10.11.0.0"
 framework: "net9.0"
 owner: "jellyfin"
-overview: "Manage your books"
+overview: "Comic Vine Metadata Provider"
 description: >
   Supports several different metadata providers and options for organizing your collection.
 category: "Books"
