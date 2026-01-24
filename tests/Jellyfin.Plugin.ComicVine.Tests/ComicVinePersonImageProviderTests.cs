@@ -1,16 +1,16 @@
 using System.Net;
-using Jellyfin.Plugin.Bookshelf.Tests.Http;
 using Jellyfin.Plugin.ComicVine.Cache;
 using Jellyfin.Plugin.ComicVine.Common;
 using Jellyfin.Plugin.ComicVine.Providers;
+using Jellyfin.Plugin.ComicVine.Tests.Http;
 using MediaBrowser.Controller.Entities;
 using MediaBrowser.Controller.Providers;
 using Microsoft.Extensions.Logging.Abstractions;
 using NSubstitute;
 
-namespace Jellyfin.Plugin.Bookshelf.Tests
+namespace Jellyfin.Plugin.ComicVine.Tests
 {
-    public class ComicVineImageProviderTests
+    public class ComicVinePersonImageProviderTests
     {
         [Fact]
         public async Task GetImages_WithAllLinks_ReturnsLargest()
@@ -20,23 +20,23 @@ namespace Jellyfin.Plugin.Bookshelf.Tests
 
             var mockedMessageHandler = new MockHttpMessageHandler(new List<(Func<Uri, bool> requestMatcher, MockHttpResponse response)>
             {
-                ((Uri uri) => uri.AbsoluteUri.Contains("issue/4000-441467"), new MockHttpResponse(HttpStatusCode.OK, TestHelpers.GetFixture("comic-vine-single-issue.json")))
+                ((Uri uri) => uri.AbsoluteUri.Contains("person/4040-64651"), new MockHttpResponse(HttpStatusCode.OK, TestHelpers.GetFixture("comic-vine-person.json")))
             });
 
             var mockedHttpClientFactory = Substitute.For<IHttpClientFactory>();
             using var client = new HttpClient(mockedMessageHandler);
             mockedHttpClientFactory.CreateClient(Arg.Any<string>()).Returns(client);
 
-            IRemoteImageProvider provider = new ComicVineImageProvider(Substitute.For<IComicVineMetadataCacheManager>(), NullLogger<ComicVineImageProvider>.Instance, mockedHttpClientFactory, mockApiKeyProvider);
+            IRemoteImageProvider provider = new ComicVinePersonImageProvider(Substitute.For<IComicVineMetadataCacheManager>(), NullLogger<ComicVinePersonImageProvider>.Instance, mockedHttpClientFactory, mockApiKeyProvider);
 
-            var images = await provider.GetImages(new Book()
+            var images = await provider.GetImages(new Person()
             {
-                ProviderIds = { { ComicVineConstants.ProviderId, "attack-on-titan-10-fortress-of-blood/4000-441467" } }
+                ProviderIds = { { ComicVineConstants.ProviderId, "hajime-isayama/4040-64651" } }
             }, CancellationToken.None);
 
             Assert.Collection(
                 images,
-                large => Assert.Equal("https://comicvine.gamespot.com/a/uploads/scale_large/6/67663/3556541-10.jpg", large.Url));
+                large => Assert.Equal("https://comicvine.gamespot.com/a/uploads/scale_large/6/67663/4536545-30939.jpg", large.Url));
         }
     }
 }

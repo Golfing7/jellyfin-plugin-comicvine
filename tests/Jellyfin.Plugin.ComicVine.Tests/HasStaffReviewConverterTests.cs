@@ -2,7 +2,7 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using Jellyfin.Plugin.ComicVine.Models;
 
-namespace Jellyfin.Plugin.Bookshelf.Tests
+namespace Jellyfin.Plugin.ComicVine.Tests
 {
     public class HasStaffReviewConverterTests
     {

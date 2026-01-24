@@ -2,7 +2,7 @@ using Jellyfin.Data.Enums;
 using Jellyfin.Plugin.ComicVine.Common;
 using MediaBrowser.Model.Entities;
 
-namespace Jellyfin.Plugin.Bookshelf.Tests
+namespace Jellyfin.Plugin.ComicVine.Tests
 {
     public class BookFileNameParserTests
     {

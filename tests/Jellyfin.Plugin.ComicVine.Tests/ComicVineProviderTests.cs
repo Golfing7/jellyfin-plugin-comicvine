@@ -1,16 +1,16 @@
 using System.Net;
 using Jellyfin.Data.Enums;
-using Jellyfin.Plugin.Bookshelf.Tests.Http;
 using Jellyfin.Plugin.ComicVine.Cache;
 using Jellyfin.Plugin.ComicVine.Common;
 using Jellyfin.Plugin.ComicVine.Models;
 using Jellyfin.Plugin.ComicVine.Providers;
+using Jellyfin.Plugin.ComicVine.Tests.Http;
 using MediaBrowser.Controller.Entities;
 using MediaBrowser.Controller.Providers;
 using Microsoft.Extensions.Logging.Abstractions;
 using NSubstitute;
 
-namespace Jellyfin.Plugin.Bookshelf.Tests
+namespace Jellyfin.Plugin.ComicVine.Tests
 {
     public class ComicVineProviderTests
     {

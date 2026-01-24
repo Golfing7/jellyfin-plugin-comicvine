@@ -1,4 +1,4 @@
-namespace Jellyfin.Plugin.Bookshelf.Tests
+namespace Jellyfin.Plugin.ComicVine.Tests
 {
     internal static class TestHelpers
     {
