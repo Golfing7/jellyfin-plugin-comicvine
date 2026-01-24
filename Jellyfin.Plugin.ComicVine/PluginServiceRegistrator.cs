@@ -7,7 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 namespace Jellyfin.Plugin.ComicVine
 {
     /// <summary>
-    /// Register Bookshelf services.
+    /// Register services.
     /// </summary>
     public class PluginServiceRegistrator : IPluginServiceRegistrator
     {

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Jellyfin.Plugin.ComicVine.Common;
 using Jellyfin.Plugin.ComicVine.Configuration;
 using MediaBrowser.Common.Configuration;
 using MediaBrowser.Common.Plugins;
@@ -25,10 +26,10 @@ namespace Jellyfin.Plugin.ComicVine
         }
 
         /// <inheritdoc />
-        public override string Name => "Bookshelf";
+        public override string Name => ComicVineConstants.ProviderName;
 
         /// <inheritdoc />
-        public override Guid Id => Guid.Parse("9c4e63f1-031b-4f25-988b-4f7d78a8b53e");
+        public override Guid Id => Guid.Parse("309ec7e5-4981-4e8c-992f-8e4dde9591e0");
 
         /// <summary>
         /// Gets the current plugin instance.

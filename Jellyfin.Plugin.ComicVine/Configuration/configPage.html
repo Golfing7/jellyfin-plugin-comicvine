@@ -3,14 +3,14 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Bookshelf</title>
+    <title>Comic Vine</title>
 </head>
 
 <body>
-    <div id="bookshelfConfigurationPage" data-role="page" class="page type-interior pluginConfigurationPage" data-require="emby-input">
+    <div id="comicVineConfigurationPage" data-role="page" class="page type-interior pluginConfigurationPage" data-require="emby-input">
         <div data-role="content">
             <div class="content-primary">
-                <form id="bookshelfConfigurationForm">
+                <form id="comicVineConfigurationForm">
                     <div class="inputContainer">
                         <label class="inputLabel inputLabelUnfocused" for="comicVineApiKey">Comic Vine API Key</label>
                         <input id="comicVineApiKey" name="ComicVineApiKey" type="text" is="emby-input" required />
@@ -26,10 +26,10 @@
         </div>
         <script type="text/javascript">
             var TemplateConfig = {
-                pluginUniqueId: '9c4e63f1-031b-4f25-988b-4f7d78a8b53e'
+                pluginUniqueId: '309ec7e5-4981-4e8c-992f-8e4dde9591e0'
             };
 
-            document.querySelector('#bookshelfConfigurationPage')
+            document.querySelector('#comicVineConfigurationPage')
                 .addEventListener('pageshow', function () {
                     Dashboard.showLoadingMsg();
                     ApiClient.getPluginConfiguration(TemplateConfig.pluginUniqueId).then(function (config) {
@@ -38,7 +38,7 @@
                     });
                 });
 
-            document.querySelector('#bookshelfConfigurationForm')
+            document.querySelector('#comicVineConfigurationForm')
                 .addEventListener('submit', function (e) {
                     Dashboard.showLoadingMsg();
                     ApiClient.getPluginConfiguration(TemplateConfig.pluginUniqueId).then(function (config) {
