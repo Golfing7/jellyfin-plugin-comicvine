@@ -1,6 +1,6 @@
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using Jellyfin.Plugin.Bookshelf.Providers.ComicVine.Models;
+using Jellyfin.Plugin.ComicVine.Models;
 
 namespace Jellyfin.Plugin.Bookshelf.Tests
 {

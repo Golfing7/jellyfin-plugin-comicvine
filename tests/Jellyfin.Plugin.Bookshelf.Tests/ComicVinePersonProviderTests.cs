@@ -1,6 +1,8 @@
 using System.Net;
-using Jellyfin.Plugin.Bookshelf.Providers.ComicVine;
 using Jellyfin.Plugin.Bookshelf.Tests.Http;
+using Jellyfin.Plugin.ComicVine.Cache;
+using Jellyfin.Plugin.ComicVine.Common;
+using Jellyfin.Plugin.ComicVine.Providers;
 using MediaBrowser.Controller.Entities;
 using MediaBrowser.Controller.Providers;
 using Microsoft.Extensions.Logging.Abstractions;

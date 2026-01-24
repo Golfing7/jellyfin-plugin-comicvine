@@ -1,5 +1,5 @@
 using Jellyfin.Data.Enums;
-using Jellyfin.Plugin.Bookshelf.Common;
+using Jellyfin.Plugin.ComicVine.Common;
 using MediaBrowser.Model.Entities;
 
 namespace Jellyfin.Plugin.Bookshelf.Tests
