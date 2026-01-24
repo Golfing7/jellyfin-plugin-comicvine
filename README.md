@@ -6,20 +6,20 @@
 <img alt="Logo Banner" src="https://raw.githubusercontent.com/jellyfin/jellyfin-ux/master/branding/SVG/banner-logo-solid.svg?sanitize=true"/>
 <br/>
 <br/>
-<a href="https://github.com/jellyfin/jellyfin-plugin-bookshelf/actions/workflows/build.yaml">
-<img alt="GitHub Workflow Status" src="https://img.shields.io/github/actions/workflow/status/jellyfin/jellyfin-plugin-bookshelf/build.yaml">
+<a href="https://github.com/jellyfin/jellyfin-plugin-comicvine/actions/workflows/build.yaml">
+<img alt="GitHub Workflow Status" src="https://img.shields.io/github/actions/workflow/status/jellyfin/jellyfin-plugin-comicvine/build.yaml">
 </a>
-<a href="https://github.com/jellyfin/jellyfin-plugin-bookshelf">
-<img alt="MIT License" src="https://img.shields.io/github/license/jellyfin/jellyfin-plugin-bookshelf.svg"/>
+<a href="https://github.com/jellyfin/jellyfin-plugin-comicvine">
+<img alt="MIT License" src="https://img.shields.io/github/license/jellyfin/jellyfin-plugin-comicvine.svg"/>
 </a>
-<a href="https://github.com/jellyfin/jellyfin-plugin-bookshelf/releases">
-<img alt="Current Release" src="https://img.shields.io/github/release/jellyfin/jellyfin-plugin-bookshelf.svg"/>
+<a href="https://github.com/jellyfin/jellyfin-plugin-comicvine/releases">
+<img alt="Current Release" src="https://img.shields.io/github/release/jellyfin/jellyfin-plugin-comicvine.svg"/>
 </a>
 </p>
 
 ## About
 
-The Jellyfin Bookshelf plugin enables the collection of eBooks & AudioBooks, with the latter being able to be played through Jellyfin.
+This plugin adds metadata and image providers for Comic Vine.
 
 ## Build & Installation Process
 
