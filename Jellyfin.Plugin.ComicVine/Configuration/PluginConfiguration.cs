@@ -14,9 +14,12 @@ namespace Jellyfin.Plugin.ComicVine.Configuration
         public string ComicVineApiKey { get; set; } = string.Empty;
 
         /// <summary>
-        /// Gets or sets a value indicating whether the issue number of a comic should be included on its name.
+        /// Gets or sets the format for an issue's name.
         /// </summary>
-        /// <remarks>This will format the name like: Title (IssueNumber).</remarks>
-        public bool IncludeIssueNumberOnName { get; set; } = false;
+        /// <remarks>
+        /// This has the following available placeholders: {Name}, {Volume.Name}, {Id}, {IssueNumber}, {IssueNumberFormatted}.
+        /// If a value is missing or empty (no name or volume), its value will be replaced with the empty string.
+        /// </remarks>
+        public string IssueNameFormatOverride { get; set; } = string.Empty;
     }
 }

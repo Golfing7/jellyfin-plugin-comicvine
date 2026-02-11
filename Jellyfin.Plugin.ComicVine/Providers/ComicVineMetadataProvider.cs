@@ -107,19 +107,7 @@ namespace Jellyfin.Plugin.ComicVine.Providers
         {
             cancellationToken.ThrowIfCancellationRequested();
 
-            string issueName;
-            if (!string.IsNullOrWhiteSpace(issue.Name))
-            {
-                issueName = issue.Name;
-                if (Plugin.Instance!.Configuration.IncludeIssueNumberOnName)
-                {
-                    issueName += $" #{issue.IssueNumber.PadLeft(3, '0')}";
-                }
-            }
-            else
-            {
-                issueName = $"#{issue.IssueNumber.PadLeft(3, '0')}";
-            }
+            string issueName = FormatIssueName(issue);
 
             item.Name = issueName;
 
@@ -380,6 +368,23 @@ namespace Jellyfin.Plugin.ComicVine.Providers
             }
 
             return result.Trim();
+        }
+
+        /// <summary>
+        /// Formats the issue name with the given details.
+        /// </summary>
+        /// <param name="details">The details to format.</param>
+        /// <returns>The formatted issue name.</returns>
+        private string FormatIssueName(IssueDetails details)
+        {
+            // Check if an override was provided
+            if (string.IsNullOrWhiteSpace(Plugin.Instance!.Configuration.IssueNameFormatOverride))
+            {
+                return !string.IsNullOrWhiteSpace(details.Name) ? details.Name : $"#{details.IssueNumber.PadLeft(3, '0')}";
+            }
+
+            string format = Plugin.Instance!.Configuration.IssueNameFormatOverride;
+            return format.Replace("{Name}", details.Name, StringComparison.Ordinal).Replace("{Volume.Name}", details.Volume?.Name, StringComparison.Ordinal).Replace("{Id}", $"{details.Id}", StringComparison.Ordinal).Replace("{IssueNumber}", details.IssueNumber, StringComparison.Ordinal).Replace("{IssueNumberFormatted}", $"{details.IssueNumber.PadLeft(3, '0')}", StringComparison.Ordinal).Trim();
         }
     }
 }
