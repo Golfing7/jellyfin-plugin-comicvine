@@ -107,9 +107,7 @@ namespace Jellyfin.Plugin.ComicVine.Providers
         {
             cancellationToken.ThrowIfCancellationRequested();
 
-            string issueName = FormatIssueName(issue);
-
-            item.Name = issueName;
+            item.Name = FormatIssueName(issue);
 
             string sortIssueName = issue.IssueNumber.PadLeft(3, '0');
 
