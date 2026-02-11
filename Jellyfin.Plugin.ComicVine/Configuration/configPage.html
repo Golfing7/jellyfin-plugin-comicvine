@@ -47,7 +47,7 @@
                     Dashboard.showLoadingMsg();
                     ApiClient.getPluginConfiguration(TemplateConfig.pluginUniqueId).then(function (config) {
                         document.querySelector('#comicVineApiKey').value = config.ComicVineApiKey;
-                        document.querySelector('#issueNameFormatOverride').checked = config.IssueNameFormatOverride;
+                        document.querySelector('#issueNameFormatOverride').value = config.IssueNameFormatOverride;
                         Dashboard.hideLoadingMsg();
                     });
                 });
