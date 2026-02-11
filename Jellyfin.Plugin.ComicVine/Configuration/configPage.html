@@ -16,6 +16,14 @@
                         <input id="comicVineApiKey" name="ComicVineApiKey" type="text" is="emby-input" required />
                         <div class="fieldDescription"> Comic Vine API Key. Get one <a href="https://comicvine.gamespot.com/api/" target="_blank">here</a>.</div>
                     </div>
+                    <label class="checkboxContainer emby-checkbox-label">
+                        <input class="emby-checkbox" data-embycheckbox="true" id="includeIssueNumberOnName" name="IncludeIssueNumberOnName" type="checkbox" is="emby-checkbox" />
+                        <span class="checkboxLabel"> Include the issue number on the name of the comic</span>
+                        <span class="checkboxOutline">
+                            <span class="material-icons checkboxIcon checkboxIcon-checked check" aria-hidden="true"></span>
+                            <span class="material-icons checkboxIcon checkboxIcon-unchecked " aria-hidden="true"></span>
+                        </span>
+                    </label>
                     <div>
                         <button is="emby-button" type="submit" class="raised button-submit block emby-button">
                             <span>Save</span>
@@ -34,6 +42,7 @@
                     Dashboard.showLoadingMsg();
                     ApiClient.getPluginConfiguration(TemplateConfig.pluginUniqueId).then(function (config) {
                         document.querySelector('#comicVineApiKey').value = config.ComicVineApiKey;
+                        document.querySelector('#includeIssueNumberOnName').checked = config.IncludeIssueNumberOnName;
                         Dashboard.hideLoadingMsg();
                     });
                 });
@@ -43,6 +52,7 @@
                     Dashboard.showLoadingMsg();
                     ApiClient.getPluginConfiguration(TemplateConfig.pluginUniqueId).then(function (config) {
                         config.ComicVineApiKey = document.querySelector('#comicVineApiKey').value;
+                        config.IncludeIssueNumberOnName = document.querySelector('#includeIssueNumberOnName').checked;
                         ApiClient.updatePluginConfiguration(TemplateConfig.pluginUniqueId, config).then(function (result) {
                             Dashboard.processPluginConfigurationUpdateResult(result);
                         });

@@ -107,7 +107,21 @@ namespace Jellyfin.Plugin.ComicVine.Providers
         {
             cancellationToken.ThrowIfCancellationRequested();
 
-            item.Name = !string.IsNullOrWhiteSpace(issue.Name) ? issue.Name : $"#{issue.IssueNumber.PadLeft(3, '0')}";
+            string issueName;
+            if (!string.IsNullOrWhiteSpace(issue.Name))
+            {
+                issueName = issue.Name;
+                if (Plugin.Instance!.Configuration.IncludeIssueNumberOnName)
+                {
+                    issueName += $" #{issue.IssueNumber.PadLeft(3, '0')}";
+                }
+            }
+            else
+            {
+                issueName = $"#{issue.IssueNumber.PadLeft(3, '0')}";
+            }
+
+            item.Name = issueName;
 
             string sortIssueName = issue.IssueNumber.PadLeft(3, '0');
 
