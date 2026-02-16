@@ -21,6 +21,11 @@ namespace Jellyfin.Plugin.ComicVine.Common
         public const string IssueSearchUrl = BaseUrl + @"/search?api_key={0}&format=json&resources=issue&query={1}";
 
         /// <summary>
+        /// Gets the URL used to bulk search issues.
+        /// </summary>
+        public const string IssuesByVolumeUrl = BaseUrl + "/issues/?api_key={0}&format=json&filter=volume:{1}&offset={2}";
+
+        /// <summary>
         /// Gets the URL used to fetch a specific issue.
         /// </summary>
         public const string IssueDetailUrl = BaseUrl + @"/issue/{1}?api_key={0}&format=json";

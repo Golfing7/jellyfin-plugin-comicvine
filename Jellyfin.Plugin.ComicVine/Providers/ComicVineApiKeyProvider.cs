@@ -21,6 +21,7 @@ namespace Jellyfin.Plugin.ComicVine.Providers
                 return null;
             }
 
+            _logger.LogInformation("Comic Vine API key is {Key}", apiKey);
             return apiKey;
         }
     }

@@ -74,6 +74,7 @@ namespace Jellyfin.Plugin.ComicVine.Providers
                 return metadataResult;
             }
 
+            _logger.LogInformation("Getting metadata for book {1} with issue provider ID {2}", info.Name, issueProviderId);
             var issueDetails = await GetOrAddItemDetailsFromCache<IssueDetails>(issueProviderId, cancellationToken).ConfigureAwait(false);
 
             if (issueDetails != null)
@@ -109,6 +110,20 @@ namespace Jellyfin.Plugin.ComicVine.Providers
 
             item.Name = FormatIssueName(issue);
 
+            item.ForcedSortName = GetSortName(issue);
+
+            item.SeriesName = issue.Volume?.Name;
+            item.Overview = WebUtility.HtmlDecode(issue.Description);
+            item.ProductionYear = GetYearFromCoverDate(issue.CoverDate);
+
+            if (!string.IsNullOrWhiteSpace(volume?.Publisher?.Name))
+            {
+                item.AddStudio(volume.Publisher.Name);
+            }
+        }
+
+        public static string GetSortName(IssueSearch issue)
+        {
             string sortIssueName = issue.IssueNumber.PadLeft(3, '0');
 
             if (!string.IsNullOrWhiteSpace(issue.Volume?.Name))
@@ -121,16 +136,7 @@ namespace Jellyfin.Plugin.ComicVine.Providers
                 sortIssueName += ", " + issue.Name;
             }
 
-            item.ForcedSortName = sortIssueName;
-
-            item.SeriesName = issue.Volume?.Name;
-            item.Overview = WebUtility.HtmlDecode(issue.Description);
-            item.ProductionYear = GetYearFromCoverDate(issue.CoverDate);
-
-            if (!string.IsNullOrWhiteSpace(volume?.Publisher?.Name))
-            {
-                item.AddStudio(volume.Publisher.Name);
-            }
+            return sortIssueName;
         }
 
         /// <summary>
@@ -298,7 +304,7 @@ namespace Jellyfin.Plugin.ComicVine.Providers
         /// </summary>
         /// <param name="coverDate">The date, in the format "yyyy-MM-dd".</param>
         /// <returns>The year.</returns>
-        private int? GetYearFromCoverDate(string coverDate)
+        public static int? GetYearFromCoverDate(string coverDate)
         {
             if (DateTimeOffset.TryParse(coverDate, out var result))
             {

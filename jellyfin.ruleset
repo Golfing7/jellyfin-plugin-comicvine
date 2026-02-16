@@ -116,5 +116,6 @@
         <Rule Id="CA2234" Action="None" />
         <!-- Use composite formate -->
         <Rule Id="CA1863" Action="None"/>
+        <Rule Id="CS1591" Action="None"/>
     </Rules>
 </RuleSet>
